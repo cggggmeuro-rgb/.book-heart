@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="th"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>BOOK ♡ 03.05.69</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#09090b;color:#fff;font-family:Arial,sans-serif}
+.scene{position:relative;width:100%;height:100dvh;min-height:500px;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#292027 0%,#111013 48%,#050506 100%)}
+.heading{position:absolute;top:5%;width:100%;text-align:center;font-size:12px;letter-spacing:5px;color:#f5dce7;opacity:.85}
+#heart{position:absolute;inset:13% 2% 20%}
+.word{position:absolute;transform:translate(-50%,-50%) scale(.6);opacity:0;white-space:nowrap;font-weight:500;letter-spacing:.2px;text-shadow:0 0 7px currentColor;transition:left 1.8s cubic-bezier(.2,.75,.2,1),top 1.8s cubic-bezier(.2,.75,.2,1),opacity 1s ease,transform 1.8s ease}
+.word.visible{opacity:.9;transform:translate(-50%,-50%) scale(1);animation:softGlow 3s ease-in-out infinite alternate}
+@keyframes softGlow{from{filter:brightness(.88)}to{filter:brightness(1.16)}}
+.center{position:absolute;top:47%;left:50%;transform:translate(-50%,-50%);z-index:3;width:100%;text-align:center;pointer-events:none;animation:beat 2.8s ease-in-out infinite}
+.name{font-size:clamp(34px,10vw,52px);letter-spacing:5px;color:#fff8fb;text-shadow:0 0 10px #f4cfdf,0 0 28px #c98da9}
+.line{margin:8px auto;width:92px;height:1px;background:#eac6d6;opacity:.8}
+.date{font-size:15px;letter-spacing:4px;color:#f0dce5}.tiny{margin-top:10px;color:#d8b8c7;font-size:12px;letter-spacing:3px}
+@keyframes beat{0%,100%{scale:1}45%{scale:1.025}}
+button{position:absolute;bottom:5%;left:50%;transform:translateX(-50%);border:1px solid #d7b3c4;background:#211a20;color:#fbeaf1;border-radius:28px;padding:12px 22px;font-size:14px;letter-spacing:1px;z-index:5}
+</style></head><body><div class="scene"><div class="heading">A LITTLE LOVE, FOREVER</div><div id="heart"></div>
+<div class="center"><div class="name">BOOK</div><div class="line"></div><div class="date">♡ 03.05.69 ♡</div><div class="tiny">YOU &amp; ME</div></div>
+<button onclick="animateHeart()">♡ Replay animation</button></div>
+<script>
+const phrases=["I love you","Je t'aime","Te amo","Seni seviyorum","Aku cinta kamu","我爱你","Я тебя люблю","Ti amo","Ich liebe dich","愛してる","Anh yêu em","Kocham cię","Mahal kita","사랑해","รักเธอ","Te quiero","Mon amour","Jag älskar dig","♡","BOOK","Forever","Ich liebe dich","Je t'aime","I love you","รักเธอ","♡"];
+const palette=["#f8eaf0","#edc5d7","#d9b8c8","#ffffff","#f1d5e1"],holder=document.getElementById("heart"),items=[];
+for(let i=0;i<125;i++){const e=document.createElement("span");e.className="word";e.textContent=phrases[i%phrases.length];e.style.color=palette[i%palette.length];e.style.fontSize=(10+(i%4)*1.1)+"px";holder.appendChild(e);items.push(e)}
+function point(){const t=Math.random()*Math.PI*2,r=Math.sqrt(Math.random()),x=16*Math.pow(Math.sin(t),3),y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);return{x:50+x*r*2.35,y:49-y*r*2.15}}
+function animateHeart(){items.forEach(e=>{e.classList.remove("visible");e.style.transitionDelay="0ms";e.style.left=(Math.random()*96+2)+"%";e.style.top=(Math.random()*82+8)+"%"});setTimeout(()=>items.forEach((e,i)=>{const p=point();e.style.left=p.x+"%";e.style.top=p.y+"%";e.style.transitionDelay=(i*12)+"ms";setTimeout(()=>e.classList.add("visible"),50+i*12)}),160)}
+setTimeout(animateHeart,400);
+</script></body></html>
